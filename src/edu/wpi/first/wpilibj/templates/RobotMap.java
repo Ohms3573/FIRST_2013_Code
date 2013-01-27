@@ -54,8 +54,11 @@ public class RobotMap {
     // Speeds
     public static final double FRONT_LAUNCHER_SPEED = 1.0;
     public static final double REAR_LAUNCHER_SPEED = 0.8;
+    public static final double FLYWHEEL_SPINUP_TIME = 2;
     
     public static final double LAUNCHER_ADVANCE_SPEED = 0.75;
+    public static final double LAUNCHER_FORWARD_TIME = 1.0;
+    public static final double LAUNCHER_REVERSE_TIME = 1.0;
     
     public static final double DEFAULT_DRIVING_SPEED = 0.5;
     public static final double DEFAULT_SPEED_INDEX = 0;
@@ -72,6 +75,9 @@ public class RobotMap {
     
     
     // Constants
+    public static final int FORWARD = 1;
+    public static final int REVERSE = -1;
+    public static final int STOPPED = 0;
     
     
     // Left Joystick Buttons
