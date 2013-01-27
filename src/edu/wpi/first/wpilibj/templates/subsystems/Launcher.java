@@ -39,12 +39,32 @@ public class Launcher extends Subsystem {
         }
     }
     
-    public void togglerAdvancer() {
-        if (launcherAdvancer.get() == 0) {
-            launcherAdvancer.set(RobotMap.LAUNCHER_ADVANCE_SPEED);
-        }
-        else {
+    public void setAdvancer(int direction) {
+        if (direction == 0) {
             launcherAdvancer.set(0);
         }
+        else {
+            direction = direction / Math.abs(direction);
+            launcherAdvancer.set(direction * RobotMap.LAUNCHER_ADVANCE_SPEED);
+        }
+    }
+    
+    public int getAdvancerDirection() {
+        double advancerDirection = launcherAdvancer.get();
+        int direction = 0;
+        if (advancerDirection != 0) {
+            advancerDirection = advancerDirection / RobotMap.LAUNCHER_ADVANCE_SPEED;
+            if (advancerDirection > 0) {
+                direction = RobotMap.FORWARD;
+            }
+            else if (advancerDirection < 0) {
+                direction = RobotMap.REVERSE;
+            }
+        }
+        return direction;
+    }
+    
+    public boolean isOn() {
+        return !(frontFlywheel.get() == 0);
     }
 }
