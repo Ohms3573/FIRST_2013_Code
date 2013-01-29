@@ -12,11 +12,12 @@ public class LaunchDisc extends CommandBase {
     
     public LaunchDisc() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(launcher);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        launcher.togglerAdvancer();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,7 +26,7 @@ public class LaunchDisc extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
