@@ -17,6 +17,7 @@ public abstract class CommandBase extends Command {
     // Create a single static instance of all of your subsystems
     public static DriveTrain driveTrain = new DriveTrain();
     public static Launcher launcher = new Launcher();
+    public static Climber climber = new Climber();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

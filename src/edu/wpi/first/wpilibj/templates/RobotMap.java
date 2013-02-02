@@ -37,6 +37,7 @@ public class RobotMap {
     public static final int FRONT_LAUNCHER_MOTOR = 9;
     public static final int REAR_LAUNCHER_MOTOR = 8;
     public static final int LAUNCHER_ADVANCER = 7;
+    public static final int CLIMBER_MOTOR = 6;
     
     //Servos
     
@@ -81,9 +82,11 @@ public class RobotMap {
     // Right Joystick Buttons
     public static final int LAUNCHER_TOGGLE_BUTTON = 3;
     public static final int LAUNCHER_ADVANCE_BUTTON = 2;
+    public static final int CLIMB_BUTTON = 5;
     
     
     // Camera
+
     
     
 }
