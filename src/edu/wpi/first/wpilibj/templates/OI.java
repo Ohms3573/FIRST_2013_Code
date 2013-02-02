@@ -58,6 +58,7 @@ public class OI {
     JoystickButton engageBrakes;
     JoystickButton gunSpeedOverride;
     JoystickButton conveyorReverse;
+    JoystickButton climbButton;
     
     public OI() {
         leftStick = new Joystick(RobotMap.LEFT_STICK_PORT);
@@ -68,6 +69,8 @@ public class OI {
         
         launchDisc = new JoystickButton(rightStick, RobotMap.LAUNCHER_ADVANCE_BUTTON);
         launchDisc.whenReleased(new LaunchDisc());
+        
+        climbButton = new JoystickButton(rightStick, RobotMap.CLIMB_BUTTON);
       
     }
     

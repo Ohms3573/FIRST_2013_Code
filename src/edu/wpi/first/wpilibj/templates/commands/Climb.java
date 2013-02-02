@@ -8,25 +8,35 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author rchs.paulyates
  */
-public class LaunchDisc extends CommandBase {
+public class Climb extends CommandBase {
+    boolean isFinished = false;
     
-    public LaunchDisc() {
+    public Climb() {
         // Use requires() here to declare subsystem dependencies
-        requires(launcher);
+        // eg. requires(chassis);
+        requires(climber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        launcher.togglerAdvancer();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        for(int x=0; x<3; x++){
+            while(!climber.isUp()){
+                climber.raiseClimbingArm();
+            }
+            while(!climber.isDown()){
+                climber.lowerClimbingArm();               
+            }
+        }
+        isFinished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isFinished;
     }
 
     // Called once after isFinished returns true
