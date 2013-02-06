@@ -12,8 +12,6 @@ public class Climb extends CommandBase {
     boolean isFinished = false;
     
     public Climb() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
         requires(climber);
     }
 
@@ -23,15 +21,7 @@ public class Climb extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        for(int x=0; x<3; x++){
-            while(!climber.isUp()){
-                climber.raiseClimbingArm();
-            }
-            while(!climber.isDown()){
-                climber.lowerClimbingArm();               
-            }
-        }
-        isFinished = true;
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
