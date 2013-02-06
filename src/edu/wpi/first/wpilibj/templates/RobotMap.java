@@ -37,6 +37,7 @@ public class RobotMap {
     public static final int FRONT_LAUNCHER_MOTOR = 9;
     public static final int REAR_LAUNCHER_MOTOR = 8;
     public static final int LAUNCHER_ADVANCER = 7;
+    public static final int CLIMBER_MOTOR = 6;
     
     //Servos
     
@@ -48,8 +49,8 @@ public class RobotMap {
     
     
     // Sensors
-    
-
+    public static final int CLIMBER_UP_SENSOR = 1;
+    public static final int CLIMBER_DOWN_SENSOR = 2;
     
     // Speeds
     public static final double FRONT_LAUNCHER_SPEED = 1.0;
@@ -59,6 +60,8 @@ public class RobotMap {
     public static final double LAUNCHER_ADVANCE_SPEED = 0.75;
     public static final double LAUNCHER_FORWARD_TIME = 1.0;
     public static final double LAUNCHER_REVERSE_TIME = 1.0;
+    
+    public static final double CLIMBER_SPEED = 1.0;
     
     public static final double DEFAULT_DRIVING_SPEED = 0.5;
     public static final double DEFAULT_SPEED_INDEX = 0;
@@ -87,6 +90,7 @@ public class RobotMap {
     // Right Joystick Buttons
     public static final int LAUNCHER_TOGGLE_BUTTON = 3;
     public static final int LAUNCHER_ADVANCE_BUTTON = 2;
+    public static final int CLIMB_BUTTON = 1;
     
     
     // Camera
