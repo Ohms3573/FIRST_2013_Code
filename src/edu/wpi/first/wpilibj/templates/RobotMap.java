@@ -94,9 +94,9 @@ public class RobotMap {
     public static final int LAUNCHER_TOGGLE_BUTTON = 3;
     public static final int LAUNCHER_ADVANCE_BUTTON = 2;
     public static final int CLIMB_BUTTON = 1;
+    public static final int CLIMB_MANUALLY_BUTTON = 4;
     
     
     // Camera
-    
     
 }
