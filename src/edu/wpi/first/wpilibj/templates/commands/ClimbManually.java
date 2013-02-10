@@ -4,14 +4,18 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.templates.RobotMap;
+
 /**
  *
  * @author rchs.paulyates
  */
-public class Climb extends CommandBase {
-    boolean isFinished = false;
+public class ClimbManually extends CommandBase {
     
-    public Climb() {
+    Joystick stick = oi.getLeftStick();
+    
+    public ClimbManually() {
         requires(climber);
     }
 
@@ -21,12 +25,14 @@ public class Climb extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
+        if(Math.abs(stick.getAxis(Joystick.AxisType.kY)) > .1){
+            climber.setClimbingArm(stick.getAxisChannel(Joystick.AxisType.kY));
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isFinished;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -36,5 +42,6 @@ public class Climb extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        climber.setClimbingArm(RobotMap.STOPPED);
     }
 }

@@ -2,11 +2,8 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.templates.commands.LaunchDisc;
-import edu.wpi.first.wpilibj.templates.commands.ToggleLauncher;
+import edu.wpi.first.wpilibj.templates.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -57,6 +54,8 @@ public class OI {
     JoystickButton engageBrakes;
     JoystickButton gunSpeedOverride;
     JoystickButton conveyorReverse;
+    JoystickButton climbToTop;
+    JoystickButton climbManually;
     
     public OI() {
         leftStick = new Joystick(RobotMap.LEFT_STICK_PORT);
@@ -67,6 +66,12 @@ public class OI {
         
         launchDisc = new JoystickButton(rightStick, RobotMap.LAUNCHER_ADVANCE_BUTTON);
         launchDisc.whenReleased(new LaunchDisc());
+        
+        climbToTop = new JoystickButton(rightStick, RobotMap.CLIMB_BUTTON);
+        climbToTop.whenReleased(new ClimbToTop());
+        
+        climbManually = new JoystickButton(rightStick, RobotMap.CLIMB_MANUALLY_BUTTON);
+        //climbManually.whenReleased(new ClimbManually());
       
     }
     
