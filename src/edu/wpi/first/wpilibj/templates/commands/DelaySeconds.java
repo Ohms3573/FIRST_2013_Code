@@ -16,7 +16,7 @@ public class DelaySeconds extends CommandBase {
     double delayTime;
     
     public DelaySeconds(double time) {
-        delayTime = time;
+        delayTime = 1000*time;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
