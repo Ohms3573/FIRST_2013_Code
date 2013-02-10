@@ -4,6 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
@@ -18,53 +19,97 @@ public class Launcher extends Subsystem {
     private Victor rearFlywheel;
     private Victor launcherAdvancer;
     
+    private boolean spinningUpFlywheels;
+    private boolean flywheelsSpunUp;
+    private Timer spinUpTimer;
+    
+    private boolean isExtending;
+    private Timer advancerTimer;
+    
     public Launcher() {
-        frontFlywheel = new Victor(RobotMap.FRONT_LAUNCHER_MOTOR);
-        rearFlywheel = new Victor(RobotMap.REAR_LAUNCHER_MOTOR);
-        launcherAdvancer = new Victor(RobotMap.LAUNCHER_ADVANCER);
+        frontFlywheel = new Victor(RobotMap.FRONT_LAUNCHER_MOTOR_CHANNEL);
+        rearFlywheel = new Victor(RobotMap.REAR_LAUNCHER_MOTOR_CHANNEL);
+        launcherAdvancer = new Victor(RobotMap.LAUNCHER_ADVANCER_CHANNEL);
+        spinningUpFlywheels = false;
+        flywheelsSpunUp = false;
+        spinUpTimer = new Timer();
+        isExtending = false;
+        advancerTimer = new Timer();
     }
 
     public void initDefaultCommand() {
         new ToggleLauncher();
     }
     
-    public void toggleLauncherFlywheels(){
-        if (frontFlywheel.get() == 0) {
+    private void setLauncherFlywheels(boolean state) {
+        if (state == RobotMap.ON) {
             frontFlywheel.set(RobotMap.FRONT_LAUNCHER_SPEED);
             rearFlywheel.set(RobotMap.REAR_LAUNCHER_SPEED);
         }
         else {
-            frontFlywheel.set(0);
-            rearFlywheel.set(0);
+            frontFlywheel.set(RobotMap.STOPPED);
+            rearFlywheel.set(RobotMap.STOPPED);
         }
     }
     
-    public void setAdvancer(int direction) {
+    private void setAdvancer(int direction) {
         if (direction == 0) {
-            launcherAdvancer.set(0);
+            launcherAdvancer.set(RobotMap.STOPPED);
         }
         else {
             direction = direction / Math.abs(direction);
-            launcherAdvancer.set(direction * RobotMap.LAUNCHER_ADVANCE_SPEED);
+            launcherAdvancer.set(direction * RobotMap.LAUNCHER_ADVANCER_POWER);
         }
     }
     
-    public int getAdvancerDirection() {
-        double advancerDirection = launcherAdvancer.get();
-        int direction = 0;
-        if (advancerDirection != 0) {
-            advancerDirection = advancerDirection / RobotMap.LAUNCHER_ADVANCE_SPEED;
-            if (advancerDirection > 0) {
-                direction = RobotMap.FORWARD;
-            }
-            else if (advancerDirection < 0) {
-                direction = RobotMap.REVERSE;
-            }
+    public void triggerAdvancer() {
+        if (!isExtending) {
+            setAdvancer(RobotMap.FORWARD);
+            isExtending = true;
+            advancerTimer.start();
         }
-        return direction;
+    }
+    
+    public void stopAdvancer() {
+        setAdvancer(RobotMap.STOPPED);
+    }
+    
+    public boolean isExtended() {
+        boolean result = false;
+        if (isExtending && (advancerTimer.get() > RobotMap.LAUNCHER_ADVANCER_TIME)) {
+            isExtending = false;
+            advancerTimer.stop();
+            advancerTimer.reset();
+            result = true;
+        }
+        return result;
     }
     
     public boolean isOn() {
         return !(frontFlywheel.get() == 0);
+    }
+    
+    public void spinUpFlywheels() {
+        if (!isOn()) {
+            setLauncherFlywheels(RobotMap.ON);
+            spinningUpFlywheels = true;
+            spinUpTimer.start();
+        }
+    }
+    
+    public void stopFlywheels() {
+        setLauncherFlywheels(RobotMap.OFF);
+        spinningUpFlywheels = false;
+        flywheelsSpunUp = false;
+    }
+    
+    public boolean flywheelsAreSpunUp() {
+        if (spinningUpFlywheels && (spinUpTimer.get() > RobotMap.FLYWHEEL_SPINUP_TIME)) {
+            spinUpTimer.stop();
+            spinUpTimer.reset();
+            flywheelsSpunUp = true;
+            spinningUpFlywheels = false;
+        }
+        return flywheelsSpunUp;
     }
 }
