@@ -14,7 +14,7 @@ public class DriveTrain extends Subsystem {
     
     public DriveTrain() {
         speedIndex = 0;
-        driveTrain = new RobotDrive(RobotMap.LEFT_MOTOR_PORT, RobotMap.RIGHT_MOTOR_PORT);
+        driveTrain = new RobotDrive(RobotMap.LEFT_MOTOR_CHANNEL, RobotMap.RIGHT_MOTOR_CHANNEL);
         driveTrain.setSafetyEnabled(false);
     }
 

@@ -14,12 +14,12 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  * @author Paul
  */
 public class Climber extends Subsystem {
-    private Victor climbingMotor1 = new Victor(RobotMap.CLIMBER_MOTOR_1);
-    private Victor climbingMotor2 = new Victor(RobotMap.CLIMBER_MOTOR_2);
-    private DigitalInput climberUpSensor = new DigitalInput(RobotMap.CLIMBER_UP_SENSOR);
-    private DigitalInput climberDownSensor = new DigitalInput(RobotMap.CLIMBER_DOWN_SENSOR);
-    private DigitalInput shortArmSensor = new DigitalInput(RobotMap.SHORT_ARM_SENSOR);
-    private DigitalInput longArmSensor = new DigitalInput(RobotMap.LONG_ARM_SENSOR);
+    private Victor climbingMotor1 = new Victor(RobotMap.CLIMBER_MOTOR_1_CHANNEL);
+    private Victor climbingMotor2 = new Victor(RobotMap.CLIMBER_MOTOR_2_CHANNEL);
+    private DigitalInput climberUpSensor = new DigitalInput(RobotMap.CLIMBER_UP_SENSOR_CHANNEL);
+    private DigitalInput climberDownSensor = new DigitalInput(RobotMap.CLIMBER_DOWN_SENSOR_CHANNEL);
+    private DigitalInput shortArmSensor = new DigitalInput(RobotMap.SHORT_ARM_SENSOR_CHANNEL);
+    private DigitalInput longArmSensor = new DigitalInput(RobotMap.LONG_ARM_SENSOR_CHANNEL);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -40,19 +40,6 @@ public class Climber extends Subsystem {
         climbingMotor1.set(speed);
         climbingMotor2.set(speed);
     }
-    
-//    public void raiseClimbingArm(){
-//        climbingMotor1.set(RobotMap.CLIMBER_SPEED);
-//        climbingMotor2.set(RobotMap.CLIMBER_SPEED);
-//    }
-//    public void lowerClimbingArm(){
-//        climbingMotor1.set(-RobotMap.CLIMBER_SPEED);
-//        climbingMotor2.set(-RobotMap.CLIMBER_SPEED);
-//    }
-//    public void stopClimbingArm(){
-//        climbingMotor1.set(RobotMap.STOPPED);
-//        climbingMotor2.set(RobotMap.STOPPED);
-//    }
     
     public boolean isDown(){
         return climberDownSensor.get();

@@ -32,6 +32,6 @@ public class ClimbToTop extends CommandGroup {
         addSequential(new ClimbOneRung());
         addSequential(new ClimbOneRung());
         addSequential(new ClimbOneRung());
-        addSequential(new ExtendArm());
+        addSequential(new ContractArm());
     }
 }

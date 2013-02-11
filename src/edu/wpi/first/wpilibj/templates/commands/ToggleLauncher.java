@@ -10,21 +10,31 @@ package edu.wpi.first.wpilibj.templates.commands;
  */
 public class ToggleLauncher extends CommandBase {
     
+    private boolean spinningUpFlywheels;
+    
     public ToggleLauncher() {
         requires(launcher);
+        spinningUpFlywheels = false;
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {}
+    protected void initialize() {
+        if (!launcher.isOn()) {
+            launcher.spinUpFlywheels();
+            spinningUpFlywheels = true;
+        }
+        launcher.stopFlywheels();
+    }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        launcher.toggleLauncherFlywheels();
-    }
+    protected void execute() {}
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        if (spinningUpFlywheels && launcher.flywheelsAreSpunUp()) {
+            spinningUpFlywheels = false;
+        }
+        return !spinningUpFlywheels;
     }
 
     // Called once after isFinished returns true

@@ -17,8 +17,6 @@ public class DelaySeconds extends CommandBase {
     
     public DelaySeconds(double time) {
         delayTime = 1000*time;
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -33,15 +31,24 @@ public class DelaySeconds extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get()>= delayTime;
+        return timer.get() >= delayTime;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        timer.stop();
+        timer.reset();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() {}
+    
+    /**
+     *
+     * @return false
+     */
+    public boolean isInterruptible() {
+        return false;
     }
 }
