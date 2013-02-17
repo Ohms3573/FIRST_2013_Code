@@ -44,6 +44,7 @@ public class Robot_3573 extends IterativeRobot {
         autonomousTimer.start();
         autonomousScheduler.run();
         System.out.println("Autonomous Enabled");
+        getWatchdog().feed();
 //        autoComm.start();
     }
 
@@ -56,6 +57,7 @@ public class Robot_3573 extends IterativeRobot {
             autonomousTimer.reset();
             autonomousScheduler.run();
             autonomousTimer.start();
+            getWatchdog().feed();
         }
     }
     

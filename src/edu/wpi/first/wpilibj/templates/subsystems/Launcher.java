@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.templates.Dashboard;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.ToggleLauncher;
 
@@ -15,6 +16,8 @@ import edu.wpi.first.wpilibj.templates.commands.ToggleLauncher;
  * @author rchs.paulyates
  */
 public class Launcher extends Subsystem {
+    private static final String myDashboardId = "Launcher";
+    
     private Victor frontFlywheel;
     private Victor rearFlywheel;
     private Victor launcherAdvancer;
@@ -92,6 +95,7 @@ public class Launcher extends Subsystem {
     public void spinUpFlywheels() {
         if (!isOn()) {
             setLauncherFlywheels(RobotMap.ON);
+            Dashboard.write(myDashboardId,"Wheels Spinning");
             spinningUpFlywheels = true;
             spinUpTimer.start();
         }
