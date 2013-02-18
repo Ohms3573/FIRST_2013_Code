@@ -62,16 +62,16 @@ public class OI {
         rightStick = new Joystick(RobotMap.RIGHT_STICK_PORT);
         
         toggleLauncher = new JoystickButton(rightStick, RobotMap.LAUNCHER_TOGGLE_BUTTON);
-        toggleLauncher.whenReleased(new ToggleLauncher());
+        toggleLauncher.whenPressed(new ToggleLauncher());
         
         launchDisc = new JoystickButton(rightStick, RobotMap.LAUNCHER_ADVANCE_BUTTON);
-        launchDisc.whenReleased(new LaunchDisc());
+        launchDisc.whenPressed(new LaunchDisc());
         
-        climbToTop = new JoystickButton(rightStick, RobotMap.CLIMB_BUTTON);
-        climbToTop.whenReleased(new ClimbToTop());
+        climbToTop = new JoystickButton(leftStick, RobotMap.CLIMB_BUTTON);
+        climbToTop.whenPressed(new ClimbToTop());
         
-        climbManually = new JoystickButton(rightStick, RobotMap.CLIMB_MANUALLY_BUTTON);
-        //climbManually.whenReleased(new ClimbManually());
+        climbManually = new JoystickButton(leftStick, RobotMap.CLIMB_MANUALLY_BUTTON);
+        climbManually.whenReleased(new ClimbManually());
       
     }
     

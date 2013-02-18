@@ -63,6 +63,7 @@ public class Launcher extends Subsystem {
     }
     
     public void triggerAdvancer() {
+        System.out.println("Launcher: Triggering Advancer");
         if (!isExtending) {
             setAdvancer(RobotMap.FORWARD);
             isExtending = true;
@@ -71,6 +72,7 @@ public class Launcher extends Subsystem {
     }
     
     public void stopAdvancer() {
+        System.out.println("Launcher: Stopping advancer.");
         setAdvancer(RobotMap.STOPPED);
     }
     
@@ -90,14 +92,17 @@ public class Launcher extends Subsystem {
     }
     
     public void spinUpFlywheels() {
+        System.out.println("LAUNCHER: Spinning Up Flywheels");
         if (!isOn()) {
             setLauncherFlywheels(RobotMap.ON);
             spinningUpFlywheels = true;
+            spinUpTimer.reset();
             spinUpTimer.start();
         }
     }
     
     public void stopFlywheels() {
+        System.out.println("LAUNCHER: Stopping flywheels");
         setLauncherFlywheels(RobotMap.OFF);
         spinningUpFlywheels = false;
         flywheelsSpunUp = false;
@@ -105,6 +110,7 @@ public class Launcher extends Subsystem {
     
     public boolean flywheelsAreSpunUp() {
         if (spinningUpFlywheels && (spinUpTimer.get() > RobotMap.FLYWHEEL_SPINUP_TIME)) {
+            System.out.println("LAUNCHER: Flywheels are spun up.");
             spinUpTimer.stop();
             spinUpTimer.reset();
             flywheelsSpunUp = true;

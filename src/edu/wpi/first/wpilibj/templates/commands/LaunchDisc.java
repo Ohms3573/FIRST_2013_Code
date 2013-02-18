@@ -24,6 +24,7 @@ public class LaunchDisc extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        System.out.println("DISC LAUNCH: Launching Disc");
         if (!launcher.isOn()) {
             launcher.spinUpFlywheels();
             spinningUpFlywheels = true;
@@ -56,12 +57,15 @@ public class LaunchDisc extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        launcher.stopAdvancer();
+        launcher.stopAdvancer();        
+        System.out.println("DISC LAUNCH: Finished launching disc.");
+        
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        System.out.println("DISC LAUNCH: Launching disc interrupted");
         launcher.stopAdvancer();
     }
     

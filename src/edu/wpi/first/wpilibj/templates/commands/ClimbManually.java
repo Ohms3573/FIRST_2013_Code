@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  */
 public class ClimbManually extends CommandBase {
     
-    Joystick stick = oi.getLeftStick();
+    Joystick stick;
     
     public ClimbManually() {
         requires(climber);
@@ -21,6 +21,7 @@ public class ClimbManually extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        stick = oi.getLeftStick();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -37,6 +38,7 @@ public class ClimbManually extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+        climber.setClimbingArm(RobotMap.STOPPED);
     }
 
     // Called when another command which requires one or more of the same

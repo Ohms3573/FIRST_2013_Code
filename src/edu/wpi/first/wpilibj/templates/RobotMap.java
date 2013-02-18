@@ -30,21 +30,21 @@ public class RobotMap {
     public static final int RIGHT_STICK_PORT = 2;
     
     // Jaguars
-    public static final int LEFT_MOTOR_CHANNEL = 3;
-    public static final int RIGHT_MOTOR_CHANNEL = 4;
+    public static final int LEFT_MOTOR_CHANNEL = 8;
+    public static final int RIGHT_MOTOR_CHANNEL = 7;
     
     // Victors
-    public static final int FRONT_LAUNCHER_MOTOR_CHANNEL = 9;
-    public static final int REAR_LAUNCHER_MOTOR_CHANNEL = 8;
+    public static final int FRONT_LAUNCHER_MOTOR_CHANNEL = 6;
+    public static final int REAR_LAUNCHER_MOTOR_CHANNEL = 5;
     
-    public static final int CLIMBER_MOTOR_1_CHANNEL = 6;
-    public static final int CLIMBER_MOTOR_2_CHANNEL = 5;
+    public static final int CLIMBER_MOTOR_1_CHANNEL = 3;
+    public static final int CLIMBER_MOTOR_2_CHANNEL = 2;
     
     //Servos
     
     
     //Solenoids
-    public static final int LAUNCHER_ADVANCER_CHANNEL = 7;
+    public static final int LAUNCHER_ADVANCER_CHANNEL = 4;
     
     // Relays
     
@@ -89,14 +89,13 @@ public class RobotMap {
     
     
     // Left Joystick Buttons
-    
+    public static final int CLIMB_BUTTON = 10;
+    public static final int CLIMB_MANUALLY_BUTTON = 1;
     
     
     // Right Joystick Buttons
-    public static final int LAUNCHER_TOGGLE_BUTTON = 3;
-    public static final int LAUNCHER_ADVANCE_BUTTON = 2;
-    public static final int CLIMB_BUTTON = 1;
-    public static final int CLIMB_MANUALLY_BUTTON = 4;
+    public static final int LAUNCHER_TOGGLE_BUTTON = 2;
+    public static final int LAUNCHER_ADVANCE_BUTTON = 1;
     
     
     // Camera
