@@ -4,8 +4,6 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.Timer;
-
 /**
  *
  * @author rchs.paulyates
@@ -25,15 +23,15 @@ public class LaunchDisc extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         System.out.println("DISC LAUNCH: Launching Disc");
-        if (!launcher.isOn()) {
-            launcher.spinUpFlywheels();
-            spinningUpFlywheels = true;
-            interruptible = true;
-        }
-        else {
+//        if (!launcher.isOn()) {
+//            launcher.spinUpFlywheels();
+//            spinningUpFlywheels = true;
+//            interruptible = true;
+//        }
+//        else {
             launcher.triggerAdvancer();
-            interruptible = false;
-        }
+            interruptible = true;
+//        }
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,7 +43,7 @@ public class LaunchDisc extends CommandBase {
                 interruptible = false;
             }
         }
-        else if (launcher.isExtended()) {
+        else if (launcher.hasExtended()) {
             stop = true;
         }
     }

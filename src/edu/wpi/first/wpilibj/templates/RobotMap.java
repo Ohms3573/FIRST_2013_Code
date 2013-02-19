@@ -41,10 +41,10 @@ public class RobotMap {
     public static final int CLIMBER_MOTOR_2_CHANNEL = 2;
     
     //Servos
-    
+    public static final int LAUNCHER_ADVANCER_CHANNEL = 4;
     
     //Solenoids
-    public static final int LAUNCHER_ADVANCER_CHANNEL = 4;
+    
     
     // Relays
     
@@ -86,6 +86,8 @@ public class RobotMap {
     
     public static final boolean ON = true;
     public static final boolean OFF = false;
+    
+    public static final double TURNING_GAIN = 0.0;
     
     
     // Left Joystick Buttons

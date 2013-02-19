@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.commands.ToggleLauncher;
+import edu.wpi.first.wpilibj.Servo;
 
 /**
  *
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.templates.commands.ToggleLauncher;
 public class Launcher extends Subsystem {
     private Victor frontFlywheel;
     private Victor rearFlywheel;
-    private Victor launcherAdvancer;
+    private Servo launcherAdvancer;
     
     private boolean spinningUpFlywheels;
     private boolean flywheelsSpunUp;
@@ -29,7 +30,7 @@ public class Launcher extends Subsystem {
     public Launcher() {
         frontFlywheel = new Victor(RobotMap.FRONT_LAUNCHER_MOTOR_CHANNEL);
         rearFlywheel = new Victor(RobotMap.REAR_LAUNCHER_MOTOR_CHANNEL);
-        launcherAdvancer = new Victor(RobotMap.LAUNCHER_ADVANCER_CHANNEL);
+        launcherAdvancer = new Servo(RobotMap.LAUNCHER_ADVANCER_CHANNEL);
         spinningUpFlywheels = false;
         flywheelsSpunUp = false;
         spinUpTimer = new Timer();
@@ -63,9 +64,9 @@ public class Launcher extends Subsystem {
     }
     
     public void triggerAdvancer() {
-        System.out.println("Launcher: Triggering Advancer");
+        System.out.println("Launcher: Triggering advancer");
         if (!isExtending) {
-            setAdvancer(RobotMap.FORWARD);
+            launcherAdvancer.setAngle(45);
             isExtending = true;
             advancerTimer.start();
         }
@@ -76,19 +77,25 @@ public class Launcher extends Subsystem {
         setAdvancer(RobotMap.STOPPED);
     }
     
-    public boolean isExtended() {
+    public boolean hasExtended() {
         boolean result = false;
-        if (isExtending && (advancerTimer.get() > RobotMap.LAUNCHER_ADVANCER_TIME)) {
+        if (launcherAdvancer.getAngle()==45) {
             isExtending = false;
-            advancerTimer.stop();
-            advancerTimer.reset();
+            launcherAdvancer.setAngle(0);
+        }
+        if(launcherAdvancer.getAngle() ==0){
             result = true;
         }
         return result;
     }
     
     public boolean isOn() {
-        return !(frontFlywheel.get() == 0);
+        if(rearFlywheel.get() != 0 && frontFlywheel.get() != 0) {
+            return(true);
+        }
+        else{
+            return(false);
+        }
     }
     
     public void spinUpFlywheels() {

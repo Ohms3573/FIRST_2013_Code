@@ -10,11 +10,13 @@ import java.lang.Math;
 public class DriveTrain extends Subsystem {    
     RobotDrive driveTrain;
     int speedIndex;
+    double leftMtr;
+    double rightMtr;
     
     
     public DriveTrain() {
         speedIndex = 0;
-        driveTrain = new RobotDrive(RobotMap.LEFT_MOTOR_CHANNEL, RobotMap.RIGHT_MOTOR_CHANNEL);
+        driveTrain = new RobotDrive(RobotMap.RIGHT_MOTOR_CHANNEL, RobotMap.LEFT_MOTOR_CHANNEL);
         driveTrain.setSafetyEnabled(false);
     }
 
@@ -28,7 +30,8 @@ public class DriveTrain extends Subsystem {
     }
     
     public void driveWithJoystick(Joystick driveStick) {
-        driveTrain.arcadeDrive(driveStick);
+        driveTrain.arcadeDrive(driveStick.getY(), driveStick.getX());
+        //driveTrain.arcadeDrive(driveStick);
     }
     
     public void driveWithJoystick(Joystick driveStick1, Joystick driveStick2) {
@@ -77,5 +80,26 @@ public class DriveTrain extends Subsystem {
     
     public void stopMovement() {
         driveTrain.drive(0.0, 0.0);
+    }
+    public void arcadeDrive(double throttleValue, double turnValue) {
+
+        leftMtr = throttleValue + turnValue;
+        rightMtr = throttleValue - turnValue;
+        driveTrain.arcadeDrive(getArcadeLeftMotor(), getArcadeRightMotor());
+    }
+    public double getArcadeLeftMotor() {
+        return leftMtr + skim(rightMtr);
+    }
+
+    public double getArcadeRightMotor() {
+        return rightMtr + skim(leftMtr);            
+    }
+
+    public double skim(double v) {
+    if (v > 1.0) {
+        return -((v - 1.0) * RobotMap.TURNING_GAIN);
+    } else if (v < -1.0) {
+        return -((v + 1.0) * RobotMap.TURNING_GAIN);
+    } return 0; 
     }
 }
