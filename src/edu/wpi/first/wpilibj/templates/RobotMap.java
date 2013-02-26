@@ -30,21 +30,21 @@ public class RobotMap {
     public static final int RIGHT_STICK_PORT = 2;
     
     // Jaguars
-    public static final int LEFT_MOTOR_CHANNEL = 3;
-    public static final int RIGHT_MOTOR_CHANNEL = 4;
+    public static final int LEFT_MOTOR_CHANNEL = 8;
+    public static final int RIGHT_MOTOR_CHANNEL = 7;
     
     // Victors
-    public static final int FRONT_LAUNCHER_MOTOR_CHANNEL = 9;
-    public static final int REAR_LAUNCHER_MOTOR_CHANNEL = 8;
+    public static final int FRONT_LAUNCHER_MOTOR_CHANNEL = 6;
+    public static final int REAR_LAUNCHER_MOTOR_CHANNEL = 5;
     
-    public static final int CLIMBER_MOTOR_1_CHANNEL = 6;
-    public static final int CLIMBER_MOTOR_2_CHANNEL = 5;
+    public static final int CLIMBER_MOTOR_1_CHANNEL = 3;
+    public static final int CLIMBER_MOTOR_2_CHANNEL = 2;
     
     //Servos
-    
+    public static final int LAUNCHER_ADVANCER_CHANNEL = 4;
     
     //Solenoids
-    public static final int LAUNCHER_ADVANCER_CHANNEL = 7;
+    
     
     // Relays
     
@@ -57,11 +57,11 @@ public class RobotMap {
     
     // Speeds
     public static final double FRONT_LAUNCHER_SPEED = 1.0;
-    public static final double REAR_LAUNCHER_SPEED = 0.8;
+    public static final double REAR_LAUNCHER_SPEED = 1.0;
     public static final double FLYWHEEL_SPINUP_TIME = 2;
     
     public static final double LAUNCHER_ADVANCER_POWER = 0.75;
-    public static final double LAUNCHER_ADVANCER_TIME = 1.0;
+    public static final double LAUNCHER_ADVANCER_TIME = .4;
     
     public static final double CLIMBER_SPEED = 1.0;
     
@@ -87,16 +87,17 @@ public class RobotMap {
     public static final boolean ON = true;
     public static final boolean OFF = false;
     
+    public static final double TURNING_GAIN = 0.0;
+    
     
     // Left Joystick Buttons
-    
+    public static final int CLIMB_BUTTON = 10;
+    public static final int CLIMB_MANUALLY_BUTTON = 1;
     
     
     // Right Joystick Buttons
-    public static final int LAUNCHER_TOGGLE_BUTTON = 3;
-    public static final int LAUNCHER_ADVANCE_BUTTON = 2;
-    public static final int CLIMB_BUTTON = 1;
-    public static final int CLIMB_MANUALLY_BUTTON = 4;
+    public static final int LAUNCHER_TOGGLE_BUTTON = 2;
+    public static final int LAUNCHER_ADVANCE_BUTTON = 1;
     
     
     // Camera
