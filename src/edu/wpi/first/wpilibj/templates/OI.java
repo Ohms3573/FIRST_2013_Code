@@ -2,14 +2,10 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.templates.commands.LaunchDisc;
-import edu.wpi.first.wpilibj.templates.commands.ToggleLauncher;
+import edu.wpi.first.wpilibj.templates.commands.*;
 
 /**
- * Test Message 2
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
@@ -58,16 +54,24 @@ public class OI {
     JoystickButton engageBrakes;
     JoystickButton gunSpeedOverride;
     JoystickButton conveyorReverse;
+    JoystickButton climbToTop;
+    JoystickButton climbManually;
     
     public OI() {
         leftStick = new Joystick(RobotMap.LEFT_STICK_PORT);
         rightStick = new Joystick(RobotMap.RIGHT_STICK_PORT);
         
         toggleLauncher = new JoystickButton(rightStick, RobotMap.LAUNCHER_TOGGLE_BUTTON);
-        toggleLauncher.whenReleased(new ToggleLauncher());
+        toggleLauncher.whenPressed(new ToggleLauncher());
         
         launchDisc = new JoystickButton(rightStick, RobotMap.LAUNCHER_ADVANCE_BUTTON);
-        launchDisc.whenReleased(new LaunchDisc());
+        launchDisc.whenPressed(new LaunchDisc());
+        
+        climbToTop = new JoystickButton(leftStick, RobotMap.CLIMB_BUTTON);
+        climbToTop.whenPressed(new ClimbToTop());
+        
+        climbManually = new JoystickButton(leftStick, RobotMap.CLIMB_MANUALLY_BUTTON);
+        climbManually.whenReleased(new ClimbManually());
       
     }
     

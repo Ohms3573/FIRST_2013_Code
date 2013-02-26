@@ -1,15 +1,18 @@
-
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package edu.wpi.first.wpilibj.templates.commands;
 
 /**
  *
- * @author bradmiller
+ * @author rchs.paulyates
  */
-public class ExampleCommand extends CommandBase {
-
-    public ExampleCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+public class Climb extends CommandBase {
+    boolean isFinished = false;
+    
+    public Climb() {
+        requires(climber);
     }
 
     // Called just before this Command runs the first time
@@ -18,11 +21,12 @@ public class ExampleCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true
