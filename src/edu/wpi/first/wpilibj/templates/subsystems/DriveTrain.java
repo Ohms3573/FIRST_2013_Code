@@ -77,6 +77,12 @@ public class DriveTrain extends Subsystem {
     public void driveForward() {
         driveTrain.drive(0.5, 0);
     }
+    public void driveBackward() {
+        driveTrain.drive(-0.5,0);
+    }
+    public void turnAround(){
+        driveTrain.drive(RobotMap.TURNING_SPEED, RobotMap.TURNING_CURVE);
+    }
     
     public void stopMovement() {
         driveTrain.drive(0.0, 0.0);

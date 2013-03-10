@@ -39,5 +39,7 @@ public class Autonomous extends CommandGroup {
         addSequential(new LaunchDisc());
         addSequential(new DelaySeconds(1.5));
         addSequential(new ToggleLauncher());
+        addSequential(new DriveAutonomous(DriveAutonomous.REVERSE));
+        addSequential(new DriveAutonomous(DriveAutonomous.TURN));
     }
 }

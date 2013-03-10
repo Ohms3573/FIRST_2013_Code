@@ -88,6 +88,8 @@ public class RobotMap {
     public static final boolean OFF = false;
     
     public static final double TURNING_GAIN = 0.0;
+    public static final double TURNING_SPEED = 0.1;
+    public static final double TURNING_CURVE = 1.0;
     
     
     // Left Joystick Buttons
